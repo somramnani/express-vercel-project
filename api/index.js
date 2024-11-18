@@ -4,7 +4,13 @@ const axios = require("axios");
 
 const app = express();
 
-app.use(cors());
+const corsOptions = {
+  origin: "http://localhost:3001", // Replace with your frontend URL in production
+  methods: ["GET", "POST", "PUT", "DELETE"], // Allowed HTTP methods
+  credentials: true, // Allow cookies if needed
+};
+
+app.options("*", cors(corsOptions)); // Preflight requests for all routes
 
 app.get("/", (req, res) => res.send("Express on Vercel"));
 
