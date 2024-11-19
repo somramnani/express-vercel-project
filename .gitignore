@@ -2,3 +2,4 @@ NOTES.md
 
 /node_modules
 .vercel
+.env

@@ -1,8 +1,11 @@
 const express = require("express");
 const cors = require("cors");
 const axios = require("axios");
+require("dotenv").config();
 
 const app = express();
+
+const SUPERHERO_API_KEY = process.env.SUPERHERO_API_KEY;
 
 const corsOptions = {
   origin: "http://localhost:3000", // Replace with your frontend URL in production
@@ -23,7 +26,7 @@ app.get("/super-hero-api/:data", async (req, res) => {
 
   await axios({
     method: "get",
-    url: `https://superheroapi.com/api/88fa1b97046d4d9666b719510bbb8257/search/${req.params.data}`,
+    url: `https://superheroapi.com/api/${SUPERHERO_API_KEY}/search/${req.params.data}`,
   })
     .then(function (response) {
       console.log(response.data);
