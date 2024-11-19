@@ -9,13 +9,13 @@ const SUPERHERO_API_KEY = process.env.SUPERHERO_API_KEY;
 
 const corsOptions = {
   origin: "http://localhost:3000", // Replace with your frontend URL in production
-  methods: ["GET", "POST", "PUT", "DELETE"], // Allowed HTTP methods
+  methods: ["GET,HEAD,PUT,PATCH,POST,DELETE"], // Allowed HTTP methods
   credentials: true, // Allow cookies if needed
 };
 
 // app.options("*", cors(corsOptions)); // Preflight requests for all routes
 
-app.use(cors());
+app.use(cors(corsOptions));
 
 app.get("/", (req, res) => res.send("Express on Vercel"));
 
